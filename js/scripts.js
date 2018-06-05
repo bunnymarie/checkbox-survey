@@ -1,16 +1,16 @@
 $(document).ready(function(){
-  //Base of Alignment
-  var baseGood = [];
-  var baseNeutral = [];
-  var baseEvil = [];
-
-  //Law of Alignment
-  var lawLawful = [];
-  var lawNeutral = [];
-  var lawChaotic = [];
 
   $("form#fortune-teller-form").submit(function(event){
     event.preventDefault();
+    //Base of Alignment
+    var baseGood = [];
+    var baseNeutral = [];
+    var baseEvil = [];
+
+    //Law of Alignment
+    var lawLawful = [];
+    var lawNeutral = [];
+    var lawChaotic = [];
     //adding base neutral questions together
     $("input:checkbox[value=a]:checked").each(function(){
       baseNeutral.push('a');
@@ -23,7 +23,6 @@ $(document).ready(function(){
     $("input:checkbox[value=c]:checked").each(function(){
       baseGood.push('c');
     });
-
     //adding law trueneutral questions together
     $("input:checkbox[value=x]:checked").each(function(){
       lawNeutral.push('x');
@@ -70,5 +69,55 @@ $(document).ready(function(){
     } else {
       //EMPTY UNTIL FURTHER NOTICE
     }
+    debugger;
+    if (baseResult === 1){
+      //Good
+      if (lawResult === 1){
+        //Lawful
+        alert("Lawful Good");
+      } else if (lawResult === 2){
+        //Neutral
+        alert("Neutral Good");
+      } else if (lawResult === 3){
+        //Chaotic
+        alert("Chaotic Good");
+      } else {
+        alert("??/good")
+      }
+    } else if (baseResult === 2){
+      //Neutral
+      if (lawResult === 1){
+        //Lawful
+        alert("Lawful Neutral");
+      } else if (lawResult === 2){
+        //Neutral
+        alert("True Neutral");
+      } else if (lawResult === 3){
+        //Chaotic
+        alert("Chaotic Neutral");
+      } else {
+        //other
+        alert("???/Neutral");
+      }
+    } else if (baseResult === 3){
+      //Evil
+      if (lawResult === 1){
+        //Lawful
+        alert("Lawful Evil");
+      } else if (lawResult === 2){
+        //Neutral
+        alert("Neutral Evil");
+      } else if (lawResult === 3){
+        //Chaotic
+        alert("Chaotic Evil");
+      } else {
+      //other
+      alert("???/Evil");
+      }
+    } else {
+      //EMPTY FOR NOW
+      alert("Its a mystery??");
+    }
+
   });
 });
